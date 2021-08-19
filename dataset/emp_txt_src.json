@@ -1,0 +1,22 @@
+{
+	"name": "emp_txt_src",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage_emp_txt",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Emp_File.txt",
+				"container": "demofiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
