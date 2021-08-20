@@ -1,0 +1,17 @@
+{
+	"name": "SqlServerAdva",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=True;data source=DESKTOP-NNIC4E2;initial catalog=Digi_Data",
+			"userName": "Sayali",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJjMjhmYWZhYy1hNGI1LTQ5N2MtOThhMS03ZDRiNTY1YWE2ZjciLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "OnprimseSQLServer",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
