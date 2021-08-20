@@ -1,0 +1,6 @@
+{
+	"name": "OnprimseSQLServer",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
