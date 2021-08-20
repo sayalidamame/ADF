@@ -1,0 +1,12 @@
+{
+	"name": "Arraycopydata",
+	"properties": {
+		"variables": {
+			"Tables": {
+				"type": "String",
+				"defaultValue": "[\"select * from product\", \"select * from people\"]"
+			}
+		},
+		"annotations": []
+	}
+}
