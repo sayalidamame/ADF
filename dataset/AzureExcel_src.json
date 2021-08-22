@@ -1,0 +1,21 @@
+{
+	"name": "AzureExcel_src",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ExcelConn",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Sheet1",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Vehical.xlsx",
+				"container": "demofiles"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": []
+	}
+}
