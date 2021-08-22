@@ -1,0 +1,16 @@
+{
+	"name": "AzureSqlTable_dest",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "Test",
+			"table": "Testloaddata"
+		}
+	}
+}
