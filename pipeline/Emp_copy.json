@@ -55,7 +55,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "emp_txt_des",
+						"referenceName": "DelimitedText2",
 						"type": "DatasetReference"
 					}
 				]
