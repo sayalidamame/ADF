@@ -15,6 +15,26 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage_txt'"
 		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
+		},
+		"ExcelConn_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ExcelConn'"
+		},
+		"SqlServerAdva_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SqlServerAdva'"
+		},
+		"SqlServerAdva_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'SqlServerAdva'"
+		},
+		"SqlServerAdva_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Sayali"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -47,10 +67,45 @@
 					},
 					"AzureBlobStorage_txt_connectionString": {
 						"value": "[parameters('AzureBlobStorage_txt_connectionString')]"
+					},
+					"AzureSqlDatabase1_connectionString": {
+						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
+					},
+					"ExcelConn_connectionString": {
+						"value": "[parameters('ExcelConn_connectionString')]"
+					},
+					"SqlServerAdva_connectionString": {
+						"value": "[parameters('SqlServerAdva_connectionString')]"
+					},
+					"SqlServerAdva_password": {
+						"value": "[parameters('SqlServerAdva_password')]"
+					},
+					"SqlServerAdva_properties_typeProperties_userName": {
+						"value": "[parameters('SqlServerAdva_properties_typeProperties_userName')]"
 					}
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "ADFSampleD1_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ADFSampleD1_ArmTemplate_0')]"
+			]
 		}
 	]
 }

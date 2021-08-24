@@ -10,6 +10,21 @@
 		},
 		"AzureBlobStorage_txt_connectionString": {
 			"value": ""
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
+		"ExcelConn_connectionString": {
+			"value": ""
+		},
+		"SqlServerAdva_connectionString": {
+			"value": ""
+		},
+		"SqlServerAdva_password": {
+			"value": ""
+		},
+		"SqlServerAdva_properties_typeProperties_userName": {
+			"value": "Sayali"
 		}
 	}
 }
