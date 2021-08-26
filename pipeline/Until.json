@@ -6,11 +6,7 @@
 				"name": "Until1",
 				"type": "Until",
 				"dependsOn": [],
-				"userProperties": [
-					{
-						"name": "FileAvailable"
-					}
-				],
+				"userProperties": [],
 				"typeProperties": {
 					"expression": {
 						"value": "@bool(variables('FileAvailable'))",
