@@ -89,7 +89,7 @@
 		"parameters": {
 			"Foldername": {
 				"type": "string",
-				"defaultValue": "demofiles"
+				"defaultValue": "Emp_File"
 			}
 		},
 		"annotations": []
