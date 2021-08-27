@@ -1,0 +1,22 @@
+{
+	"name": "switchcase",
+	"properties": {
+		"activities": [
+			{
+				"name": "Switch1",
+				"type": "Switch",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"cases": []
+				}
+			}
+		],
+		"parameters": {
+			"FolderName": {
+				"type": "string"
+			}
+		},
+		"annotations": []
+	}
+}
