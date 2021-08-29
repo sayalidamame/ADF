@@ -19,7 +19,15 @@
 					"name": "deptscr"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Output",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "ModifyColumns1",
@@ -27,12 +35,9 @@
 				},
 				{
 					"name": "Join1"
-				},
-				{
-					"name": "Aggregate1"
 				}
 			],
-			"script": "source(output(\n\t\tId as string,\n\t\tName as string,\n\t\tCity as string,\n\t\taddress as string,\n\t\tdno as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> inputemp\nsource(output(\n\t\tdno as string,\n\t\tname as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> deptscr\ninputemp derive(Name = upper(Name)) ~> ModifyColumns1\nModifyColumns1, deptscr join(inputemp@dno == deptscr@dno,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> Join1\nJoin1 aggregate(groupBy(deptscr@dno),\n\tempcnt = countDistinct(Id)) ~> Aggregate1"
+			"script": "source(output(\n\t\tId as string,\n\t\tName as string,\n\t\tCity as string,\n\t\taddress as string,\n\t\tdno as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> inputemp\nsource(output(\n\t\tdno as string,\n\t\tname as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> deptscr\ninputemp derive(Name = upper(Name)) ~> ModifyColumns1\nModifyColumns1, deptscr join(inputemp@dno == deptscr@dno,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> Join1\nJoin1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['Empout.txt'],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tpartitionBy('hash', 1)) ~> sink1"
 		}
 	}
 }
