@@ -1,5 +1,5 @@
 {
-	"name": "Scr_Emp",
+	"name": "Scr_input",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage_emp_txt",
