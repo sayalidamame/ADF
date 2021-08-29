@@ -37,7 +37,7 @@
 					"name": "Join1"
 				}
 			],
-			"script": "source(output(\n\t\tId as string,\n\t\tName as string,\n\t\tCity as string,\n\t\taddress as string,\n\t\tdno as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> inputemp\nsource(output(\n\t\tdno as string,\n\t\tname as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> deptscr\ninputemp derive(Name = upper(Name)) ~> ModifyColumns1\nModifyColumns1, deptscr join(Id == deptscr@dno,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> Join1\nJoin1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tId,\n\t\tName = ModifyColumns1@Name,\n\t\tdno = deptscr@dno,\n\t\tname = deptscr@name\n\t)) ~> sink1"
+			"script": "source(output(\n\t\tId as string,\n\t\tName as string,\n\t\tCity as string,\n\t\taddress as string,\n\t\tdno as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> inputemp\nsource(output(\n\t\tdno as string,\n\t\tname as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> deptscr\ninputemp derive(Name = upper(Name)) ~> ModifyColumns1\nModifyColumns1, deptscr join(Id == deptscr@dno,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> Join1\nJoin1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['Empdetp'],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tId,\n\t\tName = ModifyColumns1@Name,\n\t\tdno = deptscr@dno,\n\t\tname = deptscr@name\n\t),\n\tpartitionBy('hash', 1)) ~> sink1"
 		}
 	}
 }
