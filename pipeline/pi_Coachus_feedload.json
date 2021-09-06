@@ -25,7 +25,8 @@
 						"formatSettings": {
 							"type": "DelimitedTextReadSettings",
 							"compressionProperties": {
-								"type": "ZipDeflateReadSettings"
+								"type": "ZipDeflateReadSettings",
+								"preserveZipFileNameAsFolder": true
 							}
 						}
 					},
