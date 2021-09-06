@@ -1,0 +1,6 @@
+{
+	"name": "SelfIntegrationRuntine",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
