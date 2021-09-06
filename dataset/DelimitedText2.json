@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": {
-					"value": "@concat('CoachUS_',utcnow())",
+					"value": "@concat('CoachUS_',formatDateTime(utcnow(),'MMDDYYYY_HHMMSS'),'.zip')",
 					"type": "Expression"
 				},
 				"folderPath": "Coach/Archive",
