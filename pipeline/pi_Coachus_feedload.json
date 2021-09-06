@@ -23,7 +23,10 @@
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
+							"type": "DelimitedTextReadSettings",
+							"compressionProperties": {
+								"type": "ZipDeflateReadSettings"
+							}
 						}
 					},
 					"sink": {
@@ -35,7 +38,7 @@
 					"logSettings": {
 						"enableCopyActivityLog": true,
 						"copyActivityLogSettings": {
-							"logLevel": "Warning",
+							"logLevel": "Info",
 							"enableReliableLogging": false
 						},
 						"logLocationSettings": {
@@ -598,7 +601,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_coachfile",
+						"referenceName": "DelimitedText1",
 						"type": "DatasetReference"
 					}
 				],
