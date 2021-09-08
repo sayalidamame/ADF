@@ -1,0 +1,39 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_coachfile",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "Ds_inventory",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_sql_coachusdb",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Lookup1"
+				}
+			],
+			"script": "source(output(\n\t\tId as string,\n\t\tTitle as string,\n\t\tLink as string,\n\t\t{Image Link} as string,\n\t\tPrice as string,\n\t\tAvailability as string,\n\t\tDescription as string,\n\t\tDescription_Long as string,\n\t\tBrand as string,\n\t\tColor as string,\n\t\t{Refinement Color} as string,\n\t\tSize as string,\n\t\tDimension as string,\n\t\tGender as string,\n\t\tSale_Price as string,\n\t\tGTIN as string,\n\t\tMPN as string,\n\t\tMaterial as string,\n\t\t{Refinement Material} as string,\n\t\t{Lining Material} as string,\n\t\t{Insole Material} as string,\n\t\t{Outsole Material} as string,\n\t\t{Hardware Material} as string,\n\t\t{Item Group Id} as string,\n\t\t{Additional Image Links} as string,\n\t\tBreadcrumbs as string,\n\t\tisOutlet as string,\n\t\tMerchandiseDivision as string,\n\t\tMerchandiseClass as string,\n\t\tOnlineFrom as string,\n\t\tDefaultVariant as string,\n\t\tAdditionalCategories as string,\n\t\tSilhouette as string,\n\t\tIsOnClearanceShop as string,\n\t\tIsOnSale as string,\n\t\tStyleGroup as string,\n\t\tProductType as string,\n\t\tProductSetItems as string,\n\t\tRating as string,\n\t\tReviewCount as string,\n\t\tIsMemberExclusive as string,\n\t\tBagSize as string,\n\t\tIsEmployeeSale as string,\n\t\tIsNewArrival as string,\n\t\tVariationId as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource(output(\n\t\tid as string,\n\t\tinventory as string,\n\t\tfull_price as string,\n\t\tsale_price as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source2\nsource1, source2 lookup(source1@Id == source2@id,\n\tmultiple: false,\n\tpickup: 'any',\n\tbroadcast: 'auto')~> Lookup1\nLookup1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tId as string,\n\t\tTitle as string,\n\t\tLink as string,\n\t\tImageLink as string,\n\t\tPrice as string,\n\t\tAvailability as string,\n\t\tDescription as string,\n\t\tDescription_Long as string,\n\t\tBrand as string,\n\t\tColor as string,\n\t\t{Refinement Color} as string,\n\t\tSize as string,\n\t\tDimension as string,\n\t\tGender as string,\n\t\tSale_Price as string,\n\t\tGTIN as string,\n\t\tMPN as string,\n\t\tMaterial as string,\n\t\t{Refinement Material} as string,\n\t\tLiningMaterial as string,\n\t\tInsoleMaterial as string,\n\t\tOutsoleMaterial as string,\n\t\tHardwareMaterial as string,\n\t\tItemGroupId as string,\n\t\tAdditionalImageLinks as string,\n\t\tBreadcrumbs as string,\n\t\tisOutlet as string,\n\t\tMerchandiseDivision as string,\n\t\tMerchandiseClass as string,\n\t\tOnlineFrom as string,\n\t\tDefaultVariant as string,\n\t\tAdditionalCategories as string,\n\t\tSilhouette as string,\n\t\tIsOnClearanceShop as string,\n\t\tIsOnSale as string,\n\t\tStyleGroup as string,\n\t\tProductType as string,\n\t\tProductSetItems as string,\n\t\tRating as string,\n\t\tReviewCount as string,\n\t\tIsMemberExclusive as string,\n\t\tBagSize as string,\n\t\tIsEmployeeSale as string,\n\t\tIsNewArrival as string,\n\t\t{VariationId } as string,\n\t\tineventory as string\n\t),\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\ttruncate:true,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tTitle,\n\t\tLink,\n\t\tPrice,\n\t\tAvailability,\n\t\tDescription,\n\t\tDescription_Long,\n\t\tBrand,\n\t\tColor,\n\t\t{Refinement Color},\n\t\tSize,\n\t\tDimension,\n\t\tGender,\n\t\tGTIN,\n\t\tMPN,\n\t\tMaterial,\n\t\t{Refinement Material},\n\t\tBreadcrumbs,\n\t\tisOutlet,\n\t\tMerchandiseDivision,\n\t\tMerchandiseClass,\n\t\tOnlineFrom,\n\t\tDefaultVariant,\n\t\tAdditionalCategories,\n\t\tSilhouette,\n\t\tIsOnClearanceShop,\n\t\tIsOnSale,\n\t\tStyleGroup,\n\t\tProductType,\n\t\tProductSetItems,\n\t\tRating,\n\t\tReviewCount,\n\t\tIsMemberExclusive,\n\t\tBagSize,\n\t\tIsEmployeeSale,\n\t\tIsNewArrival,\n\t\t{VariationId } = VariationId,\n\t\tId = source1@Id,\n\t\tineventory = inventory\n\t)) ~> sink1"
+		}
+	}
+}
