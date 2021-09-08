@@ -187,6 +187,10 @@
 			{
 				"name": "VariationId ",
 				"type": "varchar"
+			},
+			{
+				"name": "ineventory",
+				"type": "varchar"
 			}
 		],
 		"typeProperties": {
