@@ -21,15 +21,19 @@
 		},
 		"schema": [
 			{
+				"name": "id",
 				"type": "String"
 			},
 			{
+				"name": "inventory",
 				"type": "String"
 			},
 			{
+				"name": "full_price",
 				"type": "String"
 			},
 			{
+				"name": "sale_price",
 				"type": "String"
 			}
 		]
