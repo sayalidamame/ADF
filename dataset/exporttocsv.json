@@ -1,0 +1,23 @@
+{
+	"name": "exporttocsv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lks_blob_coach",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "Coach",
+				"container": "users"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
