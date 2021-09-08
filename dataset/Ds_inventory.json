@@ -1,0 +1,37 @@
+{
+	"name": "Ds_inventory",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lks_blob_coach",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Certona_US_Retail_Inventory_Feed_9.7.21.csv",
+				"folderPath": "Coach",
+				"container": "users"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			}
+		]
+	}
+}
