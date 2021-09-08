@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "coach_us_retail_certona_v2.csv",
+				"fileName": "Certona_US_Retail_Product_Feed_9.7.21.csv",
 				"folderPath": "Coach",
 				"container": "users"
 			},
